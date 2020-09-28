@@ -1,4 +1,4 @@
-# ekolo/eko-http
+# ekolobuilder/eko-http
 
 It is a component module of the `Ekolo` framework intended to manage and handle all the processing related to all the requests and the` http` responses.
 
