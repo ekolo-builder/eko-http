@@ -1,14 +1,14 @@
 <?php
     /**
-     * Ce fichier est une partie du Framework Ekolo
-     * (c) Don de Dieu BOLENGE <dondedieubolenge@gmail.com>
+     * This file is a part of the Ekolo Builder
+     * @author Don de Dieu BOLENGE <dondedieubolenge@gmail.com>
      */
-    namespace Ekolo\Component\Http\Options;
+    namespace Ekolo\Http\Options;
     
-    use Ekolo\Component\EkoMagic\ParameterBag;
+    use Ekolo\EkoMagic\ParameterBag;
 
     /**
-     * Controlle les paramètres de $_FILES (Les données venant d'un formulaire par la méthode POST)
+     * Controls the parameters of $ _FILES (The data coming from a form by the POST method)
      */
     class Files extends ParameterBag {
 
@@ -19,9 +19,9 @@
         }
 
         /**
-         * Permet de modifier la valeur de $_FILES
-         * @param string $key La clé
-         * @param mixed $value la valeur
+         * Modify a variable
+         * @param string $key
+         * @param mixed $value
          * @return void
          */
         public function set($key, $value)
@@ -31,8 +31,8 @@
         }
 
         /**
-         * Permet d'ajouter un nouveau tableau de $_FILES
-         * @param array $parameters Les paramètres à ajouter
+         * Add new variable
+         * @param array $parameters
          * @return void
          */
         public function add(array $parameters = [])
@@ -42,7 +42,7 @@
         }
 
         /**
-         * Remplace les variables $_FILES
+         * Replace the variables
          * @param array $parameters
          * @return void
          */
@@ -53,8 +53,8 @@
         }
 
         /**
-         * Supprime la variable
-         * @param string $key La clé de la variable à supprimer
+         * Remove a variable
+         * @param string $key
          * @return void
          */
         public function remove($key)
@@ -64,8 +64,8 @@
         }
 
         /**
-         * Retourne la variable dont la clé passée en paramètre
-         * @param string $key La clé de la variable à retoruner
+         * Return a variable
+         * @param string $key
          * @return void
          */
         public function get($key, $default = null)
@@ -76,7 +76,7 @@
         }
 
         /**
-         * Retourne les variables
+         * Return all variables
          * @return array
          */
         public function all()
@@ -87,7 +87,7 @@
         }
 
         /**
-         * Renvoi les clés des paramètres
+         * Return the variables keys
          * @return array
          */
         public function keys()
@@ -97,7 +97,7 @@
         }
 
         /**
-         * Vérifie si le parameter existe
+         * Check if the parameter exists
          * @param string $key
          * @return bool
          */
@@ -108,7 +108,7 @@
         }
 
         /**
-         * Retourne Le nombre de parameters
+         * Return number of variables
          * @return int
          */
         public function count()
