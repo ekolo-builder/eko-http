@@ -9,7 +9,6 @@
 	use Ekolo\Http\Options\Bodies;
 	use Ekolo\Http\Options\Files;
 	use Ekolo\Http\Options\Session;
-	use Ekolo\Http\HTTPRequest;
 
     /**
      * @see Ekolo\Http\RequestInterface

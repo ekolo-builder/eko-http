@@ -7,6 +7,8 @@
 
 namespace Ekolo\Http\Options;
 
+\session_start();
+
 use Ekolo\EkoMagic\ParameterBag;
 
 /**
