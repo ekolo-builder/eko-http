@@ -1,45 +1,45 @@
 # ekolo/eko-http
 
-C'est un module composant du framework `Ekolo` destiné à gérer et manipuler tous les traitements liés à toutes les requêtes et aux réponses `http`.
+It is a component module of the `Ekolo` framework intended to manage and handle all the processing related to all the requests and the` http` responses.
 
 ## Installation
 
-Pour l'installer vous devez à avoir déjà composer installé. Si ce n'est pas le cas aller sur  [Composer](https://getcomposer.org/)
+To install it you must have already dialed installed. If not go to [Composer](https://getcomposer.org/)
 
 ```bash
-$ composer require ekolo/eko-http
+$composer require ekolo/eko-http
 ```
 
 ## API
 
-`ekolo/http` contient des dossiers qui à leurs tours contiennent des classes pour faciliter la tâche aux développeurs.
+`ekolo/http` contains directories which in turn contain classes to make it easier for developers.
 
-1. `src` Dossier principal de la librairie
-    * `Options` : Contient quelques classes qui à gérer des éléments optionnnelement.
-        * `Bodies` : Gère les données venue par la méthode `POST`
-        * `Headers` : Gère les headers
-        * `Params` : Gère les données venue par la méthode `GET`
-        * `Params` : Gère les données et des variables server `$_SERVER`
-    * `Request` : Contient des classes qui alimente la class `Request` qui gère les requêtes `http`
-    * `Response` : Contient des classes qui alimente la class `Response` qui gère les réponses `http`
+1. `src` Main library directory
+    * `Options`: Contains some classes which to manage elements optionally.
+        * `Bodies`: Manage the data coming by the` POST` method
+        * `Headers`: Manage the headers
+        * `Params`: Manage the data received by the` GET` method
+        * `Params`: Manage data and server variables` $_SERVER`
+    * `Request`: Contains classes which feeds the` Request` class which manages `http` requests
+    * `Response`: Contains classes which feeds the` Response` class which manages `http` responses
 
-Pour plus des détails sur ces classes il serait mieux de parcourir le code source de chaque classe.
+For more details on these classes it would be better to browse the source code of each class.
 
 ### class Request
 
-Gère les requêtes `http`
+Handles `http` requests
 
 #### Request::params()
 
-Cette méthode permet de récuper et de manipuler les données (variables) envoyées par la méthode GET qui sont généralement stockées la variable super globale `$_GET`
+This method allows to retrieve and manipulate the data(variables) sent by the GET method which are generally stored in the super global variable `$_GET`
 
 ```php
-use Ekolo\Component\Http\Request;
+use Ekolo\Http\Request;
 
 $_GET = [
-    'nom' => 'Etokila',
-    'prenom' => 'Diani',
-    'sexe' => 'M'
+    'name' => 'Etokila',
+    'firstname' => 'Diani',
+    'sex' => 'M'
 ];
 
 $request = new Request;
@@ -47,119 +47,119 @@ $request = new Request;
 
 ##### Request::params($key)
 
-`$key` : C'est le nom de la variable à récuperer
+`$key`: This is the name of the variable to retrieve
 
 ```php
-use Ekolo\Component\Http\Request;
+use Ekolo\Http\Request;
 
 $_GET = [
-    'nom' => 'Etokila',
-    'prenom' => 'Diani',
-    'sexe' => 'M'
+    'name' => 'Etokila',
+    'firstname' => 'Diani',
+    'sex' => 'M'
 ];
 
 $request = new Request;
 
-echo $request->params('nom'); // Etokila
+echo $request-> params('name'); // Etokila
 ```
 
 ##### Request::params()->key
 
-`key` : C'est le nom de la variable à récuperer
+`key`: This is the name of the variable to retrieve
 
 ```php
-echo $request->params()->nom; // Etokila
+echo $request-> params()->name; // Etokila
 ```
 
 ##### Request::params()->key()
 
-Ceci est l'appelle des méthodes magiques si on ne veut pas récuperer par des attributs
-* `key` : C'est le nom de la variable à récuperer
+This is called magic methods if we don't want to retrieve by attributes
+* `key`: This is the name of the variable to retrieve
 
 ```php
-echo $request->params()->nom(); // Etokila
+echo $request-> params()->name(); // Etokila
 ```
 
 ##### Request::params()->get($key)
 
-`$key` : C'est le nom de la variable à récuperer
+`$key`: This is the name of the variable to retrieve
 
 ```php
-echo $request->params()->get('nom'); // Etokila
+echo $request-> params()->get('name'); // Etokila
 ```
 
 ##### Request::params()->get($key, $default = null)
 
-* `$key` : C'est le nom de la variable à récuperer
-* `$default` : C'est la valeur par défaut au cas où cette variable n'existe pas
+* `$key`: This is the name of the variable to retrieve
+* `$default`: This is the default value in case this variable does not exist
 
 ```php
-echo $request->params()->get('fonction', 'Professesur'); // Professesur
+echo $request-> params()->get('function', 'Teacher'); // Teach on
 ```
 
 ##### Request::params($key, $default)
 
-* `$key` : C'est le nom de la variable à récuperer
-* `$default` : C'est la valeur par défaut au cas où cette variable n'existe pas
+* `$key`: This is the name of the variable to retrieve
+* `$default`: This is the default value in case this variable does not exist
 
 ```php
-echo $request->params('grade', 'Médecin'); // Médecin
+echo $request-> params('grade', 'Doctor'); // Doctor
 ```
 
 ##### Request::params()->all()
 
-Renvoi le tableau contenant toutes les varibles
+Return the array containing all the variables
 
 ```php
-print_r($request->params()->all());
+print_r($request-> params()->all());
 
 /*
     Array
-    (
-        [nom] => Etokila
-        [prenom] => Diani
-        [sexe] => M
+   (
+        [name] => Etokila
+        [first name] => Diani
+        [sex] => M
     )
 */
 ```
 
-> En bref, le `params` est une instance de l'objet `ParameterBag` qui est une classe de la librairie `eko-magic`. Pour plus d'information aller sur sa [documentation](https://github.com/ekolo-contributing/eko-magic).
+> In short, the `params` is an instance of the` ParameterBag` object which is a class of the `eko-magic` library. For more information go to its [documentation](https://github.com/ekolo-contributing/eko-magic).
 
 #### Request::body()
 
-Cette méthode permet de récuperer les données envoyées par la méthode `POST`, génralement stockées dans la variable super globale `$_POST`.
+This method is used to retrieve the data sent by the `POST` method, generally stored in the super global variable` $_POST`.
 
-L'utilisation de cette méthode est égale à celle de `params`
+The use of this method is equal to that of `params`
 
 ```php
-use Ekolo\Component\Http\Request;
+use Ekolo\Http\Request;
 
 $request = new Request;
 
-$request->body()->add([
-    'nom' => 'Utilisateur',
-    'prenom' => 'nouveau',
-    'email' => 'inconnu'
+$request-> body()->add([
+    'name' => 'User',
+    'first name' => 'new',
+    'email' => 'unknown'
 ]);
 
-echo $request->body()->prenom();
+echo $request-> body()->firstname();
 ```
 
 #### Request::server()
 
-Cette méthode permet de récuperer les données du serveur, génralement stockées dans la variable super globale `$_SERVER`.
+This method is used to retrieve the data from the server, generally stored in the super global variable `$ _SERVER`.
 
-L'utilisation de cette méthode est égale à celle de `params` et `body`
+The use of this method is equal to that of `params` and` body`
 
 ```php
-use Ekolo\Component\Http\Request;
+use Ekolo\Http\Request;
 
-$request = new Request;
+$ request = new Request;
 
-echo $request->server()->PROCESSOR_IDENTIFIER);
-echo echo $request->server()->SCRIPT_NAME();
+echo $ request-> server()->PROCESSOR_IDENTIFIER);
+echo echo $ request-> server()->SCRIPT_NAME();
 
-print_r($request-server()->all());
+print_r($ request-server()->all());
 /*
 Array
 (
@@ -177,18 +177,18 @@ Array
 
 #### Request::headers()
 
-Cette méthode permet de récuperer les headers envoyés.
+This method allows you to retrieve the sent headers.
 
-L'utilisation de cette méthode est égale à celle de `params` et `body`
+The use of this method is equal to that of `params` and` body`
 
 ```php
-use Ekolo\Component\Http\Request;
+use Ekolo\Http\Request;
 
-$request = new Request;
+$ request = new Request;
 
-echo $request->headers()->get('User-Agent');
+echo $ request-> headers()->get('User-Agent');
 
-print_r($request-server()->all());
+print_r($ request-server()->all());
 /*
 Array
 (
@@ -206,25 +206,25 @@ Array
 
 #### Request::input()
 
-Cette méthode est juste un synonyme pour de body
+This method is just a synonym for de body
 
-L'utilisation de cette méthode est égale à celle de `body`
+The use of this method is equal to that of `body`
 
 ```php
-use Ekolo\Component\Http\Request;
+use Ekolo\Http\Request;
 
-$request = new Request;
-$request->input()->set('nom', 'mbuyu');
+$ request = new Request;
+$ request-> input()->set('name', 'mbuyu');
 
-echo $request->input()->get('nom');
+echo $ request-> input()->get('name');
 
-print_r($request-server()->all());
+print_r($ request-server()->all());
 ```
 
-> Attention pour les clés qui ont de tiret `-`, là le génarateur des attributs et des méthodes ne les prend pas en charge, du cout ces valeurs ne peuvent être récuperées que par `get('User-agent')` ou `params('user-name')` ou `body('encore-ici')'` ainsi de suite
+> Be careful for the keys which have a hyphen `-`, there the generator of attributes and methods does not support them, because of the cost these values ​​can only be retrieved by` get('User-agent') `or` params('user-name') `or` body('still-here') '' and so on
 
 ### class Response
 
-Gère les réponses `http`
+Handles `http` responses
 
-Pour plus de détails consulter les codes sources dans `src/Response`
+For more details see the source codes in `src/Response`
