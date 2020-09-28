@@ -1,28 +1,27 @@
 <?php
     /**
-     * Ce fichier est une partie du Framework Ekolo
-     * (c) Don de Dieu BOLENGE <dondedieubolenge@gmail.com>
+     * This file is a part of the Ekolo Builder
+     * @author Don de Dieu BOLENGE <dondedieubolenge@gmail.com>
      */
-	namespace Ekolo\Component\Http;
+	namespace Ekolo\Http;
 
-	use Ekolo\Component\Http\Options\Params;
-	use Ekolo\Component\Http\Options\Bodies;
-	use Ekolo\Component\Http\Options\Files;
-	use Ekolo\Component\Http\HTTPRequest;
-	use Ekolo\Component\Http\RequestValidator;
+	use Ekolo\Http\Options\Params;
+	use Ekolo\Http\Options\Bodies;
+	use Ekolo\Http\Options\Files;
+	use Ekolo\Http\Options\Session;
+	use Ekolo\Http\HTTPRequest;
 
     /**
-     * @see Ekolo\Component\Http\RequestInterface
+     * @see Ekolo\Http\RequestInterface
      */
-    class Request extends HTTPRequest implements RequestInterface {
-
-		use RequestValidator;
+    class Request extends HTTPRequest {
 
 		protected $params,
 				  $body, 
 				  $bodies,
 				  $files,
-				  $input;
+				  $input,
+				  $session;
 
 		public function __construct()
 		{
@@ -30,12 +29,13 @@
 			$this->params = new Params;
 			$this->files  = new Files;
 			$this->body   = new Bodies;
+			$this->session = new Session;
 		}
 
         /**
-		 * Manipule et renvoi les données du type GET stockées dans $_GET
-		 * @param string $key La clé de la variable
-		 * @param mixed $default La valeur par défault au cas où cette variable n'existe pas
+		 * Handles and returns data of type GET stored in $_GET
+		 * @param string $key The key to the variable
+		 * @param mixed $default The default value in case this variable does not exist
 		 * @return mixed|Params
 		 */
 		public function params($key = null, $default = null)
@@ -48,9 +48,9 @@
 		}
 		
 		/**
-		 * Manipule et renvoi les données du type POST stockées dans $_POST
-		 * @param string $key La clé de la valeur
-		 * @param mixed $default la valeur par défaut au cas où cette variable n'existe pas
+		 * Handles and returns data of type POST stored in $_POST
+		 * @param string $key
+		 * @param mixed $default
 		 * @return mixed|Bodies
 		 */
 		public function body($key = null, $default = null)
@@ -63,9 +63,24 @@
 		}
 
 		/**
-		 * Manipule et renvoi les données du type FILES stockées dans $_FILES
-		 * @param string $key La clé de la valeur
-		 * @param mixed $default la valeur par défaut au cas où cette variable n'existe pas
+		 * Handles and returns data of type SESSION stored in $_SESSION
+		 * @param string $key
+		 * @param mixed $default
+		 * @return mixed|Session
+		 */
+		public function session($key = null, $default = null)
+		{
+			if ($key) {
+				return $this->session->has($key) ? $this->session->get($key) : $default;
+			}else {
+				return $this->session;
+			}
+		}
+
+		/**
+		 * Handles and returns data of type FILES stored $_FILES
+		 * @param string $key
+		 * @param mixed $default 
 		 * @return mixed|Files
 		 */
 		public function files($key = null, $default = null)
@@ -78,9 +93,9 @@
 		}
 		
 		/**
-		 * Manipule et renvoi les données du type POST stockées dans $_POST
-		 * @param string $key La clé de la valeur
-		 * @param mixed $default la valeur par défaut au cas où cette variable n'existe pas
+		 * Handles and returns data of type POST stored
+		 * @param string $key 
+		 * @param mixed $default 
 		 * @return mixed|Bodies
 		 */
 		public function input($key = null, $default = null)
@@ -89,9 +104,9 @@
 		}
         
         /**
-		 * Vérifie s'il y a une la variable $_GET[$key]
-		 * @param string $key La clé de la variable
-		 * @return mixed
+		 * Check if there is a variable $_GET [$ key]
+		 * @param string $key
+		 * @return bool
 		 */
 		public function paramExists($key)
 		{
@@ -99,7 +114,7 @@
 		}
 
 		/**
-		 * Renvoi la méthode dont la requête a été lancée
+		 * Return the method whose request was launched
 		 * @return string
 		 */
 		public function method()
@@ -108,7 +123,7 @@
 		}
 
 		/**
-		 * Renvoi l'uri (url) demandé par le client
+		 * Return the uri (url) requested by the client
 		 * @return string
 		 */
 		public function uri()
@@ -117,7 +132,7 @@
 		}
 
 		/**
-		 * Vérifie si la requête est en AJAX ou pas
+		 * Check if the request is in AJAX or not
 		 * @return bool
 		 */
 		public function ajax()

@@ -12,7 +12,7 @@ use Ekolo\EkoMagic\ParameterBag;
 /**
  * Controls the parameters of $_SESSION (The data coming from a form by the SESSION method)
  */
-class Server extends ParameterBag
+class Session extends ParameterBag
 {
 
     public function __construct(array $vars = [])

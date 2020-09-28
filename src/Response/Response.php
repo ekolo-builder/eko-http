@@ -1,12 +1,12 @@
 <?php
     /**
-     * Ce fichier est une partie du Framework Ekolo
-     * (c) Don de Dieu BOLENGE <dondedieubolenge@gmail.com>
+     * This file is a part of the Ekolo Builder
+     * @author Don de Dieu BOLENGE <dondedieubolenge@gmail.com>
      */
-    namespace Ekolo\Component\Http;
+    namespace Ekolo\Http;
     
-    use Ekolo\Component\Http\Options\Server;
-    use Ekolo\Component\Http\Options\Headers;
+    use Ekolo\Http\Options\Server;
+    use Ekolo\Http\Options\Headers;
 
     /**
      * Gère les response http
@@ -120,7 +120,7 @@
         }
 
         /**
-         * Rnvoi l'instance de Ekolo\Component\Http\Options\Server
+         * Rnvoi l'instance de Ekolo\Http\Options\Server
          * @return Server
          */
         public function server()

@@ -24,7 +24,7 @@
         }
 
         /**
-		 * Renvoi l'adresse IP de l'utilisateur
+		 * Returns the user's IP address
 		 * @return string $ip
 		 */
 		public function getClientIp()
@@ -33,7 +33,16 @@
 		}
 
 		/**
-		 * Renvoi le protocol du serveur
+		 * Returns the user's IP address
+		 * @return string $ip
+		 */
+		public function ip()
+		{
+			return $this->server->get('REMOTE_ADDR');
+		}
+
+		/**
+		 * Return the server protocol
 		 * @return string
 		 */
 		public function getServerProtocol()
@@ -42,7 +51,7 @@
 		}
 
 		/**
-		 * Renvoi le remote port
+		 * Forward the remote port
 		 * @return string
 		 */
 		public function getRemotePort()
@@ -51,7 +60,7 @@
 		}
 
 		/**
-		 * Renvoi l'application du server PHP et sa version
+		 * Return the application from the PHP server and its version
 		 * @return string
 		 */
 		public function getServerSoftware()
@@ -60,7 +69,7 @@
 		}
 
 		/**
-		 * Renvoi le nom du serveur
+		 * Return the server name
 		 * @return string
 		 */
 		public function getSeverName()
@@ -69,7 +78,7 @@
 		}
 
 		/**
-		 * Renvoi le port dont le serveur est lancer
+		 * Return the port whose server is running
 		 * @return string
 		 */
 		public function getServerPort()
@@ -78,7 +87,7 @@
 		}
 
 		/**
-		 * Renvoi le fichier exécuté
+		 * Return the executed file
 		 * @return string
 		 */
 		public function scriptName()
@@ -87,7 +96,7 @@
 		}
 
 		/**
-		 * Renvoi le path du fichier exécuté
+		 * Return the path of the executed file
 		 * @return string
 		 */
 		public function scriptFileName()
@@ -96,7 +105,7 @@
 		}
 
 		/**
-		 * Renvoi le query string
+		 * Return the query string
 		 * @return string
 		 */
 		public function queryString()
@@ -105,7 +114,7 @@
 		}
 
 		/**
-		 * Renvoi le path du fichier exécuté
+		 * Return the path of the executed file
 		 * @return string
 		 */
 		public function httpHost()
@@ -114,7 +123,7 @@
 		}
 
 		/**
-		 * Renvoi le request uri
+		 * Return the request uri
 		 * @return string
 		 */
 		public function requestUri()
@@ -123,7 +132,7 @@
 		}
 
 		/**
-		 * Retourne l'instance de Server
+		 * Returns the Server instance
 		 * @return Ekolo\Http\Server
 		 */
 		public function server()
@@ -132,7 +141,7 @@
 		}
 
 		/**
-		 * Retourne l'instance de Headers
+		 * Returns the Headers instance
 		 * @return Ekolo\Http\Headers
 		 */
 		public function headers()
