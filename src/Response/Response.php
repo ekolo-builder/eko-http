@@ -9,24 +9,24 @@
     use Ekolo\Http\Options\Headers;
 
     /**
-     * Gère les response http
+     * Manage http responses
      */
     class Response
     {
         /**
-         * Les variables à envoyer dans les vues
+         * Variables to send to views
          * @var array
          */
         protected $vars = [];
 
         /**
-         * Objet de la classe Server
+         * Object of the Server class
          * @var Server
          */
         protected $server;
 
         /**
-         * Le fichier de la vue à afficher
+         * The view file to display
          * @var string
          */
         protected $fileView;
@@ -37,8 +37,8 @@
         }
 
         /**
-         * Permet d'ajouter les headers dans la response à donner
-         * @param array $headers Les headers à ajouter
+         * Allows you to add the headers in the response to be given
+         * @param array $headers
          * @return void
          */
         public function addHeaders(array $headers = [])
@@ -51,9 +51,9 @@
         }
 
         /**
-         * Permet d'ajouter une nouvelle variable à la vue
-         * @param string $var Le nom de la variable
-         * @param mixed $value La valeur à ajouter à la variable
+         * Allows you to add a new variable to the view
+         * @param string $var The name of the variable
+         * @param mixed $value The value to add to the variable
          */
         public function addVar(string $var, $value)
         {
@@ -61,8 +61,8 @@
         }
 
         /**
-         * Permet de faire une redirection vers un autre url
-         * @param string $url L'url à être redirigé
+         * Allows you to redirect to another url
+         * @param string $url
          * @return void
          */
         public function redirect(string $url)
@@ -72,8 +72,8 @@
         }
 
         /**
-         * Permet de modifier le status
-         * @param int $status Le code du status
+         * Allows to modify the status
+         * @param int $status The status code
          * @return void
          */
         public function setStatus(int $status = null)
@@ -84,10 +84,10 @@
         }
 
         /**
-         * Permet de renvoyer les données
-         * @param mixed $data Les données à afficher
-         * @param array $headers Les headers à envoyer
-         * @param mixed $status Le status
+         * Allows to return the data
+         * @param mixed $data The data to display
+         * @param array $headers The headers to send
+         * @param mixed $status The status
          */
         public function send($data, array $headers = [], int $status = null)
         {
@@ -109,8 +109,8 @@
         }
         
         /**
-         * Renvoi les données en JSON
-         * @param mixed $data Les données à renvoyer
+         * Return data in JSON format
+         * @param mixed $data
          * @param mixed $status
          */
         public function json($data, array $headers = [], int $status = null)
@@ -120,7 +120,7 @@
         }
 
         /**
-         * Rnvoi l'instance de Ekolo\Http\Options\Server
+         * Return the instance of Ekolo\Http\Options\Server
          * @return Server
          */
         public function server()
