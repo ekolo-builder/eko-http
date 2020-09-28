@@ -1,14 +1,14 @@
 <?php
-    /**
-     * Ce fichier est un component du Framework Ekolo
-     * (c) Don de Dieu BOLENGE <dondedieubolenge@gmail.com>
+   /**
+     * This file is a part of the Ekolo Builder
+     * @author Don de Dieu BOLENGE <dondedieubolenge@gmail.com>
      */
-    namespace Ekolo\Component\Http\Options;
+    namespace Ekolo\Http\Options;
     
-    use Ekolo\Component\EkoMagic\ParameterBag;
+    use Ekolo\EkoMagic\ParameterBag;
 
     /**
-     * Controlle les headers
+     * Manage the headers
      */
     class Headers extends ParameterBag {
 
