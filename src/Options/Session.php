@@ -10,19 +10,20 @@ namespace Ekolo\Http\Options;
 use Ekolo\EkoMagic\ParameterBag;
 
 /**
- * Controls the parameters of $ _SERVER (The data coming from a form by the POST method)
+ * Controls the parameters of $_SESSION (The data coming from a form by the SESSION method)
  */
 class Server extends ParameterBag
 {
 
     public function __construct(array $vars = [])
     {
-        $vars = !empty($vars) ? $vars : $_SERVER;
-        parent::__construct($vars);
+        $_SESSION = !empty($vars) ? array_merge($_SESSION, $vars) : $_SESSION;
+        parent::__construct($_SESSION);
+
     }
 
     /**
-     * Allows you to modify the value of POST element
+     * Allows you to modify the value of SESSION element
      * @param string $key
      * @param mixed $value
      * @return void
@@ -30,18 +31,18 @@ class Server extends ParameterBag
     public function set($key, $value)
     {
         parent::set($key, $value);
-        $_SERVER[$key] = $value;
+        $_SESSION[$key] = $value;
     }
 
     /**
-     * Allows you to modify the value of POST...
+     * Allows you to modify the value of SESSION...
      * @param array $parameters
      * @return void
      */
     public function add(array $parameters = [])
     {
         parent::add($parameters);
-        $_SERVER = array_merge($_SERVER, $parameters);
+        $_SESSION = array_merge($_SESSION, $parameters);
     }
 
     /**
@@ -52,7 +53,7 @@ class Server extends ParameterBag
     public function replace(array $parameters = [])
     {
         parent::replace($parameters);
-        $_SERVER = $parameters;
+        $_SESSION = $parameters;
     }
 
     /**
@@ -63,7 +64,7 @@ class Server extends ParameterBag
     public function remove($key)
     {
         parent::remove($key);
-        unset($_SERVER[$key]);
+        unset($_SESSION[$key]);
     }
 
     /**
@@ -75,7 +76,7 @@ class Server extends ParameterBag
     {
         parent::get($key, $default);
 
-        return $this->has($key) ? $_SERVER[$key] : null;
+        return $this->has($key) ? $_SESSION[$key] : null;
     }
 
     /**
@@ -86,7 +87,7 @@ class Server extends ParameterBag
     {
         parent::all();
 
-        return $_SERVER;
+        return $_SESSION;
     }
 
     /**
@@ -96,7 +97,7 @@ class Server extends ParameterBag
     public function keys()
     {
         parent::keys();
-        return array_keys($_SERVER);
+        return array_keys($_SESSION);
     }
 
     /**
@@ -107,7 +108,7 @@ class Server extends ParameterBag
     public function has($key)
     {
         parent::has($key);
-        return array_key_exists($key, $_SERVER);
+        return array_key_exists($key, $_SESSION);
     }
 
     /**
@@ -117,6 +118,6 @@ class Server extends ParameterBag
     public function count()
     {
         parent::count();
-        return \count($_SERVER);
+        return \count($_SESSION);
     }
 }

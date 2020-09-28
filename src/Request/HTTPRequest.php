@@ -1,15 +1,15 @@
 <?php
     /**
-     * Ce fichier est une partie du Framework Ekolo
-     * (c) Don de Dieu BOLENGE <dondedieubolenge@gmail.com>
+     * This file is a part of the Ekolo Builder
+     * @author Don de Dieu BOLENGE <dondedieubolenge@gmail.com>
      */
-    namespace Ekolo\Component\Http;
+    namespace Ekolo\Http;
     
-    use Ekolo\Component\Http\Options\Server;
-    use Ekolo\Component\Http\Options\Headers;
+    use Ekolo\Http\Options\Server;
+    use Ekolo\Http\Options\Headers;
 
     /**
-     * Répertorie les variables http et d'autres fonctionnalités
+     * Lists http variables and other features
      */
     class HTTPRequest {
 
@@ -124,7 +124,7 @@
 
 		/**
 		 * Retourne l'instance de Server
-		 * @return Ekolo\Component\Http\Server
+		 * @return Ekolo\Http\Server
 		 */
 		public function server()
 		{
@@ -133,7 +133,7 @@
 
 		/**
 		 * Retourne l'instance de Headers
-		 * @return Ekolo\Component\Http\Headers
+		 * @return Ekolo\Http\Headers
 		 */
 		public function headers()
 		{
