@@ -1,25 +1,26 @@
 # ekolobuilder/eko-http
 
-It is a component module of the `Ekolo` framework intended to manage and handle all the processing related to all the requests and the` http` responses.
+It is a component module of the `Ekolo Builder` intended to manage and handle all the processing related to all the requests and the` http` responses.
 
 ## Installation
 
 To install it you must have already dialed installed. If not go to [Composer](https://getcomposer.org/)
 
 ```bash
-$composer require ekolo/eko-http
+$ composer require ekoloekolobuilder/eko-http
 ```
 
 ## API
 
-`ekolo/http` contains directories which in turn contain classes to make it easier for developers.
+`ekolobuilder/http` contains directories which in turn contain classes to make it easier for developers.
 
 1. `src` Main library directory
     * `Options`: Contains some classes which to manage elements optionally.
         * `Bodies`: Manage the data coming by the` POST` method
         * `Headers`: Manage the headers
         * `Params`: Manage the data received by the` GET` method
-        * `Params`: Manage data and server variables` $_SERVER`
+        * `Server`: Manage data and server variables` $_SERVER`
+        * `Session`: Manage data and server variables` $_SESSION`
     * `Request`: Contains classes which feeds the` Request` class which manages `http` requests
     * `Response`: Contains classes which feeds the` Response` class which manages `http` responses
 
