@@ -7,7 +7,7 @@ It is a component module of the `Ekolo Builder` intended to manage and handle al
 To install it you must have already dialed installed. If not go to [Composer](https://getcomposer.org/)
 
 ```bash
-$ composer require ekoloekolobuilder/eko-http
+$ composer require ekolobuilder/eko-http
 ```
 
 ## API
