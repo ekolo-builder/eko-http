@@ -15,12 +15,12 @@
      */
     class Request extends HTTPRequest {
 
-		protected $params,
-				  $body, 
-				  $bodies,
-				  $files,
-				  $input,
-				  $session;
+		public $params,
+			   $body, 
+			   $bodies,
+			   $files,
+			   $input,
+			   $session;
 
 		public function __construct()
 		{
