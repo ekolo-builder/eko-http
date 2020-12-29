@@ -143,7 +143,7 @@
         public function locales(string $var = null, mixed $value = null)
         {
             if (!empty($var) && !empty($value)) {
-                $this->addVar($var, $value);
+                return $this->addVar($var, $value);
             }elseif (!empty($var) && empty($value)) {
                 return $this->vars[$var];
             }else {
