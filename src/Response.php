@@ -30,7 +30,7 @@
          * Object of the Locales class
          * @var Locales
          */
-        protected $locales;
+        public $locales;
 
         /**
          * The view file to display
@@ -134,6 +134,22 @@
         public function server()
         {
             return $this->server;
+        }
+
+        /**
+         * Return the instance of Ekolo\Http\Options\Server
+         * @return Server
+         */
+        public function locales(string $var = null, mixed $value = null)
+        {
+            if (!empty($var) && !empty($value)) {
+                $this->addVar($var, $value);
+            }elseif (!empty($var) && empty($value)) {
+                return $this->vars[$var];
+            }else {
+                $this->locales->add($this->vars);
+                return $this->locales;
+            }
         }
     }
     
