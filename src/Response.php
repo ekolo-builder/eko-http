@@ -7,6 +7,7 @@
     
     use Ekolo\Http\Options\Server;
     use Ekolo\Http\Options\Headers;
+    use Ekolo\Http\Options\Locales;
 
     /**
      * Manage http responses
@@ -26,6 +27,12 @@
         protected $server;
 
         /**
+         * Object of the Locales class
+         * @var Locales
+         */
+        protected $locales;
+
+        /**
          * The view file to display
          * @var string
          */
@@ -34,6 +41,7 @@
         public function __construct()
         {
             $this->server = new Server;
+            $this->locales = new Locales;
         }
 
         /**
